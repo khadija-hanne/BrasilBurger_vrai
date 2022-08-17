@@ -21,7 +21,7 @@ export class CommandesComponent implements OnInit {
       {
         this.commandes = resultat;
         resultat.forEach(element => {
-          console.log(element.date);
+          // console.log(element.date);
           if (this.isToday(element.date)) {
             this.commandesToday.push(element);
           } 

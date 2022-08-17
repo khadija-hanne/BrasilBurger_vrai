@@ -18,6 +18,7 @@ import { CommandesComponent } from './commandes/commandes.component';
 import { CommandeDetailsComponent } from './commandes/commande-details/commande-details.component';
 import { AdminModule } from './admin/admin.module';
 import { DatePipe } from '@angular/common';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: 
@@ -40,7 +41,8 @@ import { DatePipe } from '@angular/common';
     Ng2SearchPipeModule,
     HttpClientModule,
     AppRoutingModule,
-    AdminModule
+    AdminModule,
+    NgxPaginationModule
     
   ],
   providers: [DatePipe],//services

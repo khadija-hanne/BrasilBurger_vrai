@@ -1,3 +1,4 @@
+<div class="container" style="border: 2px solid orange;">
 <table class="table mt-5">
     <thead class="bg-warning text-light" style="font-size: 1em;">
       <tr class="text-center">
@@ -9,10 +10,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let commande of commandes; let i = index" class="text-center">
+      <tr *ngFor="let commande of commandes | paginate: { itemsPerPage: 10, currentPage: p }; let i = index" class="text-center">
         <td>{{i+1}}</td>
         <td>{{commande.etatCommande}}</td>
-        <td>{{commande.date | date : "dd-mm-yyyy HH:mm"}}</td>
+        <td>{{commande.date | date : " HH:mm"}}</td>
         <td>
             <button class="btn btn-outline-info">Détails</button>
             <button class="btn btn-outline-danger ms-3">Annuler</button>
@@ -22,3 +23,5 @@
       
     </tbody>
   </table>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>

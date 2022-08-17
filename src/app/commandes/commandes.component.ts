@@ -10,13 +10,13 @@ import { CommandeService } from '../services/commande.service';
 export class CommandesComponent implements OnInit {
   commandes : Commande[] = [];
   index = 0;
-
+  p: number = 1;
   constructor(private serviceCommande : CommandeService) { }
 
   ngOnInit(): void {
 
     this.serviceCommande.getCommandes().subscribe(resultat => {
-      console.log(resultat);
+      // console.log(resultat);
       this.commandes = resultat;
       
     })

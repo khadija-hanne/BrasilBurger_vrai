@@ -18,6 +18,8 @@ export class CommandeDetailComponent implements OnInit {
     const commandeId = this.route.snapshot.params['id'];
     this.serviceCommande.getCommande(commandeId).subscribe(resultat => {
         this.commande = resultat;
+        console.log(this.commande);
+        
     })
 
   }

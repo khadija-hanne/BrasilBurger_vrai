@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LivraisonService } from 'src/app/services/livraison.service';
 
 @Component({
   selector: 'app-livraisons',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LivraisonsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private serviceLivraison : LivraisonService) { }
 
   ngOnInit(): void {
+    this.serviceLivraison.getZonesToday().subscribe(resultat => {
+      console.log(resultat);
+      
+    })
   }
 
 }
