@@ -1,0 +1,16 @@
+<p>boisson works!</p>
+<button class="btn btn-dark" (click)="quantite(-1)"> - </button>
+    <input type="number" [value]="" name="" id="" #input class="form-control" readonly>
+    <span>{{qte}}</span>
+    <button class="btn btn-dark" (click)="quantite(+1)"> + </button>
+
+<div>
+    <div>
+    <img class="card-img-top mt-5 offset-5 shadow-lg p-3 mb-5 bg-body rounded" [src]="transform('data:image/jpg;base64,' )" alt="Card image cap" style="width:100px ;height: 100px; border-radius:5px">
+    <p class="text-danger text-center fw-bold"></p>
+    <button class="btn btn-dark" (click)="quantite(-1)"> - </button>
+    <input type="number" [value]="" name="" id="" #input min="0" class="form-control" readonly>
+    <span></span>
+    <button class="btn btn-dark" (click)="quantite(+1)"> + </button>
+    </div> 
+</div>

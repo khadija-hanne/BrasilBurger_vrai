@@ -1,0 +1,33 @@
+
+<div class="col-4 col-md-12 mb-4">
+    <div class="card shadow-lg p-3 mb-5 bg-body rounded">
+      <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
+        data-mdb-ripple-color="light">
+        <img [src]="transform('data:image/jpg;base64,' + product.image)" class="w-100" />
+        <a href="#!">
+          <div class="mask">
+            <div class="d-flex justify-content-start align-items-end h-100">
+              <h5><span class="badge bg-primary ms-2">New</span></h5>
+            </div>
+          </div>
+          <div class="hover-overlay">
+            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+          </div>
+        </a>
+      </div>
+      <div class="card-body">
+        <a href="" class="text-reset">
+          <h5 class="card-title mb-3">{{product.nom}}</h5>
+        </a>
+        <a href="" class="text-reset">
+          <p>{{product.typeProduit}}</p>
+        </a>
+        <h6 class="mb-3">{{product.prix}}</h6>
+      </div>
+      <div class="row mt-2 mb-2 ms-4">
+      <button *ngIf="product.typeProduit=='burger'" class="btn btn-danger btn-sm col-5" (click)="addCart(product)">Ajouter au panier</button>
+        <button class="btn btn-danger btn-sm ms-2 col-4">Détails</button>
+    </div>
+    </div>
+    
+  </div>

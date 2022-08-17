@@ -1,0 +1,28 @@
+<p>commandes works!</p>
+
+<table class="table mt-5">
+    <thead class="bg-warning text-light" style="font-size: 1em;">
+      <tr class="text-center">
+        <th class="p-4">N°</th>
+        <th class="p-4">Etat</th>
+        <th class="p-4">Date</th>
+        <th class="p-4">Actions</th>
+       
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let commande of commandesToday; let i = index" class="text-center">
+        <td>{{i+1}}</td>
+        <td>{{commande.etatCommande}}</td>
+        <td>{{commande.date | date : "dd-mm-yyyy HH:mm"}}</td>
+        <td>
+            <button class="btn btn-outline-info" [routerLink]="['/admin/commandes',commande.id]">Détails</button>
+            <button class="btn btn-outline-success ms-3 " (click)="etat(commande , 'validée')">Valider</button>
+            <button class="btn btn-outline-danger ms-3 " (click)="etat(commande , 'annulée')">Annuler</button>
+        </td>
+        
+      </tr>
+      
+    </tbody>
+  </table>
+
