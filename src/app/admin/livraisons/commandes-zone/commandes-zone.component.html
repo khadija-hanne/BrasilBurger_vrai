@@ -1,0 +1,93 @@
+
+<div class="container mt-5" style="border: 2px solid orange;">
+    <table class="table mt-5">
+    <thead class="bg-warning text-light" style="font-size: 1em;">
+      <tr class="text-center">
+        <th class="p-4"></th>
+        <th class="p-4">N°</th>
+        <th class="p-4">Référence</th>
+       
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let commande of commandes; let i = index" class="text-center">
+        <td>
+            <div class="custom-control custom-checkbox">
+                <input class="form-check-input" type="checkbox" value="{{commande.id}}" id="flexSwitchCheckDefault"  (click)="isChecked()">
+
+            </div>
+        </td>
+        <td>{{i+1}}</td> 
+        <td>{{commande.reference}}</td> 
+        
+      </tr>
+      
+    </tbody>
+  </table>
+  <div *ngIf="commandeschecked.length > 0" >
+  <div class="row col-3 offset-5" *ngFor="let livreur of livreurs" >
+    <input type="radio"  name="options" [value]="livreur.id" id="option2" autocomplete="off" [(ngModel)]="idLivreur" />
+    <label class="btn btn-warning" for="option2">{{livreur.prenom}}</label>
+  </div>
+</div>
+  <button class="btn btn-outline-success" (click)="livrer()" >Livrer</button>
+</div>
+
+
+<!--
+<div class="container">
+    <div class="row">
+      <div class="col-12">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Select Day</th>
+              <th scope="col">Article Name</th>
+              <th scope="col">Author</th>
+              <th scope="col">Words</th>
+              <th scope="col">Shares</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="customCheck1" checked>
+                    <label class="custom-control-label" for="customCheck1">1</label>
+                </div>
+              </td>
+              <td>Bootstrap 4 CDN and Starter Template</td>
+              <td>Cristina</td>
+              <td>913</td>
+              <td>2.846</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="customCheck2">
+                    <label class="custom-control-label" for="customCheck2">2</label>
+                </div>
+              </td>
+              <td>Bootstrap Grid 4 Tutorial and Examples</td>
+              <td>Cristina</td>
+              <td>1.434</td>
+              <td>3.417</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="customCheck3">
+                    <label class="custom-control-label" for="customCheck3">3</label>
+                </div>
+              </td>
+              <td>Bootstrap Flexbox Tutorial and Examples</td>
+              <td>Cristina</td>
+              <td>1.877</td>
+              <td>1.234</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  -->

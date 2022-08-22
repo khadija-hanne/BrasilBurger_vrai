@@ -27,4 +27,5 @@ export interface Livreur{
     email:string;
     telephone:string;
     matricule : string;
+    etatLivreur : string;
 }

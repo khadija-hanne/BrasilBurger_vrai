@@ -1,0 +1,10 @@
+.user{
+    height: 70px; 
+    width:120px;
+}
+.image{
+    height: 80%; 
+    width:95%; 
+    border-radius:50%; 
+    border:2px solid
+}

@@ -1,1 +1,44 @@
 <p>new-produit works!</p>
+<div class=" col-6 offset-3">
+    <select class="form-control border border-warning text-warning" #type (click)="typeChoice(type)">
+        <option>Choisissez le type de produit</option>
+        <option value="burger">burger</option>
+        <option value="frites">Frites</option>
+        <option value="boisson">Boisson</option>
+        <option value="menu">Menu</option>
+    </select>
+</div>
+<section id="book-a-table" class="book-a-table">
+    <div class="container"  >
+      <div class="section-header">
+        <p>Ajouter <span>Vos Burgers</span>  ici</p>
+      </div>
+
+      <div class="row g-0">
+        <div class="col-lg-4 reservation-img" style="background-image: url(assets/img/produit-plat.jpeg);" ></div>
+        <div class="col-lg-8 d-flex align-items-center reservation-form-bg">
+          <form action="forms/book-a-table.php" method="post" role="form" class="php-email-form" [formGroup]="myForm" (ngSubmit)="submit()">
+            <div class="row gy-4">
+              <div class="col-lg-4 col-md-6" class="form-group">
+                <input type="text" ngModel formControlName="nom" class="form-control" id="nom" placeholder="Nom du produit">
+                <div class="validate"></div>
+              </div>
+              <div class="col-lg-4 col-md-6" >
+                <input type="number" ngModel class="form-control" formControlName="prix" id="number" placeholder="Entrer le prix">
+                <div class="validate"></div>
+              </div>
+              <div class="col-lg-4 col-md-6">
+                <input type="file" ngModel class="form-control" name="pathFile" id="file" placeholder="Image" (change)="onFileChange($event)">
+                <div class="validate"></div>
+              </div>
+              
+            </div>
+            <br>
+            <div class="text-center"><button class="btn btn-success" type="submit" >Ajouter</button></div>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  </section>

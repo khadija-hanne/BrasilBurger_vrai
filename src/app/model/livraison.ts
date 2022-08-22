@@ -4,6 +4,6 @@ export interface livraison {
     
         livreur: string,
         commandes: Commande[],
-        zone: Zone
+        zone: any
       
 }

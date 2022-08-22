@@ -23,8 +23,9 @@ export class PanierComponent implements OnInit {
   zones:Zone[] = [];
   disabled = false;
   tabCommandes : {quantite : number,produit : string}[] = [];
-  idLivreur !: number;
-  commande !: any
+  idZone !: number;
+  commande !: any;
+
 
   
   constructor(private serviceCom : CommandeService , private servicePanier : PanierService, private sanitizer:DomSanitizer,private serviceCommande:CommandeService,private http : HttpClient, private router : Router) { }
@@ -32,8 +33,6 @@ export class PanierComponent implements OnInit {
   ngOnInit(): void {
     this.items$.subscribe(
       resultat => {
-        // console.log(resultat);
-        
         this.tab = resultat;
       }
     );
@@ -43,9 +42,7 @@ export class PanierComponent implements OnInit {
           this.zones = resultat;
         }
       )
-// console.log(this.productFormat());
-
-    
+// console.log(this.productFormat());    
   }
 
   productFormat(){
@@ -99,16 +96,49 @@ choisirZone(){
   this.disabled = true;
   
 }
+zoneCheck(n:number){
+  this.idZone=0;
+  if (n!=0) {
+    this.idZone=n
+  } 
+  // console.log(this.idZone);
+  return this.idZone;
+}
 
+surPlace(e: any){  
+  if (e.target.checked) {
+    this.disabled=true;
+    this.idZone=0;
+  }
+  else
+  this.disabled=false;
+  // console.log(this.zo);
+}
+
+aLivrer(){
+  this.idZone=0;
+  this.disabled=false;
+}
  
- purchase(){
-  this.commande = {
-    "Produits": this.productFormat(),
-    "zone":"/api/zones/"+this.idLivreur,
-    "client" : "/api/clients/28"
-   }
+ commander(){
+  
+  if (this.idZone === 0) {
+    this.commande = {
+      "Produits": this.productFormat(),
+      "client" : "/api/clients/28"
+     }
+  }else{
+    this.commande = {
+      "Produits": this.productFormat(),
+      "zone":"/api/zones/"+this.idZone,
+      "client" : "/api/clients/28"
+     }
+  }
+  
   this.serviceCom.purchase(this.commande).subscribe(resultat =>
         {
+          // console.log(resultat);
+          
           if (resultat) {
             this.servicePanier.viderPanier();
             this.router.navigate(['/commandes']);
@@ -116,15 +146,14 @@ choisirZone(){
         }
     );
     //  tab.forEach(element => {this.servicePanier.removeCartItem(element)});
-  
 }
    
 
    radio(e:Event){
     const input = e.target as HTMLInputElement;
-    this.idLivreur = +input.value; 
+    this.idZone = +input.value; 
     // console.log(input.value);
-    return this.idLivreur;
+    return this.idZone;
    }
 
   }

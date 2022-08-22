@@ -5,6 +5,8 @@ import { LivraisonsComponent } from './livraisons/livraisons.component';
 import { NewLivraisonComponent } from './new-livraison/new-livraison.component';
 import { LivreurLivraisonsComponent } from './livreur-livraisons/livreur-livraisons.component';
 import { LivraisonsRoutingModule } from './livraisons-routing.module';
+import { CommandesZoneComponent } from './commandes-zone/commandes-zone.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -13,11 +15,13 @@ import { LivraisonsRoutingModule } from './livraisons-routing.module';
     LivraisonDetailComponent,
     LivraisonsComponent,
     NewLivraisonComponent,
-    LivreurLivraisonsComponent
+    LivreurLivraisonsComponent,
+    CommandesZoneComponent
   ],
   imports: [
     CommonModule,
-    LivraisonsRoutingModule
+    LivraisonsRoutingModule,
+    FormsModule
   ]
 })
 export class LivraisonsModule { }

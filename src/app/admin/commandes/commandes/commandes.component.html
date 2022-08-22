@@ -1,9 +1,13 @@
 <p>commandes works!</p>
+<div class="container p-3 mt-5" style="border: 2px solid orange;">
+  
+  <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" style="border: 3px solid orange;">
 
-<table class="table mt-5">
-    <thead class="bg-warning text-light" style="font-size: 1em;">
+<table class="table mt-5" >
+    <thead class="bg-warning text-light">
       <tr class="text-center">
         <th class="p-4">N°</th>
+        <th class="p-4">Référence</th>
         <th class="p-4">Etat</th>
         <th class="p-4">Date</th>
         <th class="p-4">Actions</th>
@@ -11,18 +15,19 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let commande of commandesToday; let i = index" class="text-center">
+      <tr *ngFor="let commande of commandesToday | filter:searchText | paginate: { itemsPerPage: 10, currentPage: p }; let i = index" class="text-center">
         <td>{{i+1}}</td>
+        <td>{{commande.reference}}</td>
         <td>{{commande.etatCommande}}</td>
-        <td>{{commande.date | date : "dd-mm-yyyy HH:mm"}}</td>
+        <td>{{commande.date | date : "dd-MM-yyyy HH:mm"}}</td>
         <td>
-            <button class="btn btn-outline-info" [routerLink]="['/admin/commandes',commande.id]">Détails</button>
-            <button class="btn btn-outline-success ms-3 " (click)="etat(commande , 'validée')">Valider</button>
-            <button class="btn btn-outline-danger ms-3 " (click)="etat(commande , 'annulée')">Annuler</button>
-        </td>
-        
+            <button class="btn btn-outline-info me-2" [routerLink]="['/admin/commandes',commande.id]">Détails</button>
+            <button class="btn btn-outline-success " *ngIf="commande.etatCommande.toUpperCase()!='VALIDÉE'" (click)="changerStatut(commande,'validée')" [disabled]="commande.etatCommande=='annulée'">Valider</button>
+            <button class="btn btn-outline-danger" *ngIf="commande.etatCommande.toUpperCase()==='VALIDÉE'" (click)="changerStatut(commande,'annulée')">Annuler</button>
+        </td>  
       </tr>
       
     </tbody>
   </table>
+</div>
 

@@ -3,5 +3,5 @@
 @import '~bootstrap/dist/css/theme1.css';
 
 * {
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
 }

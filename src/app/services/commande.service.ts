@@ -35,7 +35,7 @@ export class CommandeService {
     return this.http.get<Commande>(environment.url+"commandes/"+id);
   }
 
-  changerEtat(commande : Commande) : Observable<Commande>{
+  changerEtat(commande : Commande , etat : string) : Observable<Commande>{
     return this.http.put<Commande>(environment.url+"commandes/"+commande.id ,commande)
   }
 

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ProduitsComponent } from './produits/produits.component';
 import { NewProduitComponent } from './new-produit/new-produit.component';
 import { ProduitsRoutingModule } from './produits-routing.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -13,7 +14,10 @@ import { ProduitsRoutingModule } from './produits-routing.module';
   ],
   imports: [
     CommonModule,
-    ProduitsRoutingModule
+    ProduitsRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
+  
   ]
 })
 export class ProduitsModule { }

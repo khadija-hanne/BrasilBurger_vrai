@@ -14,6 +14,7 @@ export class CatalogueComponent implements OnInit {
   // catalogue: Catalogue | undefined;
   catalogueBurger: Produits[]=[];
   catalogueMenu: Menu[]=[];
+  searchText : any;
   // produit?: Produits;
   show: boolean = false;
 

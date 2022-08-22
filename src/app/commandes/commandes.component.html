@@ -1,19 +1,24 @@
-<div class="container" style="border: 2px solid orange;">
+<div class="container p-3" style="border: 2px solid orange;">
+  <div>
+    <input class="form-control" type="date" name="search" [(ngModel)]="searchText" autocomplete="off" style="border: 3px solid orange;">
+  </div>
 <table class="table mt-5">
     <thead class="bg-warning text-light" style="font-size: 1em;">
       <tr class="text-center">
         <th class="p-4">N°</th>
         <th class="p-4">Etat</th>
         <th class="p-4">Date</th>
+        <th class="p-4">Total</th>
         <th class="p-4">Actions</th>
        
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let commande of commandes | paginate: { itemsPerPage: 10, currentPage: p }; let i = index" class="text-center">
+      <tr *ngFor="let commande of commandes | filter:searchText | paginate: { itemsPerPage: 10, currentPage: p }; let i = index" class="text-center">
         <td>{{i+1}}</td>
         <td>{{commande.etatCommande}}</td>
-        <td>{{commande.date | date : " HH:mm"}}</td>
+        <td>{{commande.date | date : "dd-MM-yyyy HH:mm"}}</td>
+        <td>{{totalPrice(commande)}}</td>
         <td>
             <button class="btn btn-outline-info">Détails</button>
             <button class="btn btn-outline-danger ms-3">Annuler</button>

@@ -1,1 +1,25 @@
-<p>new-livraison works!</p>
+<div class="container" style="border: 2px solid orange;">
+    <table class="table mt-5">
+        <thead class="bg-warning text-light" style="font-size: 1em;">
+          <tr class="text-center">
+            <th class="p-4">N°</th>
+            <th class="p-4">Nom</th>
+            <th class="p-4">Actions</th>
+           
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let zone of zones; let i = index" class="text-center">
+            <td>{{i+1}}</td>
+            <td>{{zone.nom}}</td>
+            
+            <td>
+                <button class="btn btn-outline-info" [routerLink]="['/admin/livraisons/commandesZone',zone.id]" >Détails</button>
+                
+            </td>
+            
+          </tr>
+          
+        </tbody>
+      </table>    
+</div>
